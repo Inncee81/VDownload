@@ -1,0 +1,10 @@
+{GLOBAL.programInfo.name}
+
+Version: {GLOBAL.programInfo.version}
+Build: {GLOBAL.programInfo.build}
+Repository: {GLOBAL.programInfo.repository}
+
+Authors:
+{"\n".join(["%s (%s)" % (author, link) for author, link in GLOBAL.programInfo.authors.items()]).strip()}
+
+© {GLOBAL.programInfo.date[0]} - {GLOBAL.programInfo.date[1]}

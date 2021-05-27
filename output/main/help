@@ -1,0 +1,10 @@
+List of commands:
+
+• about                             - informations about this program
+
+• download <link> [options]         - download video
+    --info                          (only show informations about video)
+    --stream=<id>                   (download stream with specified id)
+    --onlyaudio                     (download only audio)
+    --output_path=<path>            (path where file should be saved)
+    --filename=<name>               (name of file)

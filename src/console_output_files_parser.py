@@ -1,5 +1,5 @@
 """
-Console Output Files Parser 1.0 (Build 21147)
+Console Output Files Parser
 by Mateusz Skoczek
 
 Module, that converts a console output file to printable string
@@ -29,7 +29,12 @@ filesEncoding = 'utf-8'
 
 # Functions
 
-def get(path, ARGS = ()):
+def get(path, ARGS = (), **kwargs):
+    upSP = True
+    downSP = True
+    for k, v in kwargs.items():
+        if k == 'up': upSP = v
+        elif k == 'down': downSP = v
     content = COD.open('%s\%s' % (outputFilesFolder, path), 'r', filesEncoding).read()
     ARGS = list(ARGS)
 
@@ -47,4 +52,4 @@ def get(path, ARGS = ()):
             after = eval(command)
             content = content.replace(before, after)
     
-    return '\n' + content + '\n'
+    return ('\n' if upSP else '') + content + ('\n' if downSP else '')

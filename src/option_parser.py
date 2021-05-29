@@ -1,5 +1,5 @@
 """
-PyOptionParser 1.0 (Build 21144)
+PyOptionParser
 by Mateusz Skoczek
 
 Simple module, which converts a array of terminal options to dictionary

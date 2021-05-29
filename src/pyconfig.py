@@ -1,5 +1,5 @@
 """
-PyConfig 0.1-dev1 (Build 21143)
+PyConfig
 by Mateusz Skoczek
 
 This module implements simple configuration files handling.

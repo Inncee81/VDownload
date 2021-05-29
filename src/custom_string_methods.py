@@ -1,5 +1,5 @@
 """
-Custom String Methods 1.0 (Build 21144)
+Custom String Methods
 by Mateusz Skoczek
 
 My custom string methods

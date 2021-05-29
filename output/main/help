@@ -1,10 +1,20 @@
 List of commands:
-
 • about                             - informations about this program
-
+• info <link>                       - returns informations about video
 • download <link> [options]         - download video
-    --info                          (only show informations about video)
-    --stream=<id>                   (download stream with specified id)
+    --onlyvideo                     (download only video)
     --onlyaudio                     (download only audio)
-    --output_path=<path>            (path where file should be saved)
-    --filename=<name>               (name of file)
+    --video=<id>                    (download video stream with specified id)
+    --audio=<id>                    (download audio stream with specified id)
+    --output_path=<path>            (folder where the downloaded file is to be saved)
+    --filename=<name>               (file naming rule)
+    --video_ext=<extension>         (video file extension)
+    --audio_ext=<extension>         (audio file extension)
+• option-get <option>               - returns value of the specified option
+• option-set <option> <value>       - sets value of the specified option
+
+List of options:
+• filename                          - file naming rule
+• output-path                       - folder where the downloaded files are to be saved
+• video_ext                         - default video file extension
+• audio_ext                         - default audio file extension

@@ -1,0 +1,69 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="AdditionalMethods">
+      <HintPath>lib\AdditionalMethods.dll</HintPath>
+    </Reference>
+    <Reference Include="AngleSharp">
+      <HintPath>lib\AngleSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="ConfigParser">
+      <HintPath>lib\ConfigParser.dll</HintPath>
+    </Reference>
+    <Reference Include="ConsoleOptionsParser">
+      <HintPath>lib\ConsoleOptionsParser.dll</HintPath>
+    </Reference>
+    <Reference Include="ConsoleTableExt">
+      <HintPath>lib\ConsoleTableExt.dll</HintPath>
+    </Reference>
+    <Reference Include="FFMpegCore">
+      <HintPath>lib\FFMpegCore.dll</HintPath>
+    </Reference>
+    <Reference Include="FilenameParser">
+      <HintPath>lib\FilenameParser.dll</HintPath>
+    </Reference>
+    <Reference Include="Instances">
+      <HintPath>lib\Instances.dll</HintPath>
+    </Reference>
+    <Reference Include="OutputParser">
+      <HintPath>lib\OutputParser.dll</HintPath>
+    </Reference>
+    <Reference Include="YoutubeExplode">
+      <HintPath>lib\YoutubeExplode.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+	  <Content Include="output\**">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+      <Content Include="ffmpeg\**">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="lib\**" />
+    <EmbeddedResource Remove="lib\**" />
+    <None Remove="lib\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="output\ffmpeg\converting_file.out" />
+    <None Remove="output\ffmpeg\merging_streams.out" />
+    <None Remove="output\main\error_wrong_site.out" />
+    <None Remove="output\youtube\delete_temporary.out" />
+    <None Remove="output\youtube\done.out" />
+    <None Remove="output\youtube\downloading_audio.out" />
+    <None Remove="output\youtube\downloading_start.out" />
+    <None Remove="output\youtube\downloading_video.out" />
+    <None Remove="output\youtube\error_invalid_url.out" />
+    <None Remove="output\youtube\video_info.out" />
+  </ItemGroup>
+
+</Project>

@@ -8,7 +8,7 @@ namespace VDownload
     class MediaProcessing
     {
         private static FFOptions  ffmpegOptions = new FFOptions {
-            BinaryFolder = @".\ffmpeg",
+            BinaryFolder = Global.PATH_FFMPEG,
             TemporaryFilesFolder = Global.PATH_TEMP,
         };
 

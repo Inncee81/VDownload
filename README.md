@@ -28,7 +28,7 @@ Executable is available <a href="https://github.com/mateuszskoczek/VDownload/rel
     </tr>
     <tr>
         <td><code>info &lt;link&gt;</code></td>
-        <td>Informations about video (metadata and available streams</td>
+        <td>Informations about video (metadata and available streams)</td>
     </tr>
     <tr>
         <td><code>download &lt;link&gt; [options]</code></td>
@@ -87,6 +87,10 @@ Executable is available <a href="https://github.com/mateuszskoczek/VDownload/rel
         <td><code>date_format</code></td>
         <td>Format of publication date in filenames and video informations</td>
     </tr>
+    <tr>
+        <td><code>ffmpeg_path</code></td>
+        <td>FFmpeg executables path</td>
+    </tr>
 </table>
 
 <b>Filename template:</b>
@@ -100,7 +104,7 @@ Executable is available <a href="https://github.com/mateuszskoczek/VDownload/rel
         <td>Video title</td>
     </tr>
     <tr>
-        <td><code>%output%</code></td>
+        <td><code>%author%</code></td>
         <td>Video author</td>
     </tr>
     <tr>
@@ -110,6 +114,18 @@ Executable is available <a href="https://github.com/mateuszskoczek/VDownload/rel
     <tr>
         <td><code>%id%</code></td>
         <td>Video ID</td>
+    </tr>
+    <tr>
+        <td><code>%act_date%</code></td>
+        <td>Actual date</td>
+    </tr>
+    <tr>
+        <td><code>%duration%</code></td>
+        <td>Video duration</td>
+    </tr>
+    <tr>
+        <td><code>%views%</code></td>
+        <td>Video views</td>
     </tr>
 </table>
 
@@ -126,4 +142,4 @@ VDownload uses the following libraries:
     <li>YoutubeExplode [<a href="https://github.com/Tyrrrz/YoutubeExplode">LINK</a>]</li>
     <li>...and my 5 libraries, which are included in repository with the libraries above.</li>
 </ul>
-FFmpeg is not included in repository, because of file size limitations. You have to download ffmpeg by yourself and put executables in ffmpeg directory.
+FFmpeg is not included in repository, because of file size limitations. You have to download FFmpeg by yourself and put executables in "ffmpeg" directory.

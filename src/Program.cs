@@ -72,7 +72,7 @@ namespace VDownload
             List<string> args = new() {
                 Global.PROGRAM_NAME,
                 Global.PROGRAM_VERSION,
-                Global.PROGRAM_BUILD,
+                Global.PROGRAM_BUILD_ID,
                 Global.PROGRAM_REPOSITORY,
                 authorsSegment.TrimEnd(),
                 Global.PROGRAM_DATE_START,

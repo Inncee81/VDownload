@@ -115,7 +115,10 @@ namespace VDownload
                     {"%title%", metadata["title"]},
                     {"%author%", metadata["author"]},
                     {"%pub_date%", metadata["date"]},
-                    {"%id%", metadata["id"]}
+                    {"%id%", metadata["id"]},
+                    {"%act_date%", DateTime.Now.ToString(Config.Main.R_key("date_format"))},
+                    {"%duration%", metadata["duration"]},
+                    {"%views%", metadata["views"]},
                 };
                 string filename = Config.Main.R_key("filename");
                 if (options.ContainsKey("filename") && !(options["filename"] == null))

@@ -1,20 +1,22 @@
 List of commands:
 • about                             - informations about this program
-• info <link>                       - returns informations about video
+• info <link>                       - informations about video
 • download <link> [options]         - download video
     --onlyvideo                     (download only video)
     --onlyaudio                     (download only audio)
-    --video=<id>                    (download video stream with specified id)
-    --audio=<id>                    (download audio stream with specified id)
-    --output_path=<path>            (folder where the downloaded file is to be saved)
-    --filename=<name>               (file naming rule)
+    --video=<id>                    (download video stream with specified id, best if not specified)
+    --audio=<id>                    (download audio stream with specified id, best if not specified)
+    --output_path=<path>            (output file path)
+    --filename=<name>               (filename template; more info in README)
     --video_ext=<extension>         (video file extension)
     --audio_ext=<extension>         (audio file extension)
-• settings-get <key>                - returns value of the specified key
-• settings-set <key> <value>        - sets value of the specified key
+• settings-get <key>                - return value of the specified key
+• settings-set <key> <value>        - set value of the specified key
+• settings-reset                    - restore default settings
 
 List of settings keys:
-• filename                          - file naming rule
-• output-path                       - folder where the downloaded files are to be saved
+• filename                          - filename template (more info in README)
+• output_path                       - output file path
 • video_ext                         - default video file extension
 • audio_ext                         - default audio file extension
+• date_format                       - format of publication date in filenames and video informations

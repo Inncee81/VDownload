@@ -20,6 +20,7 @@ namespace VDownload
                     case "download": Download(args); break;
                     case "settings-get": SettingsGet(args); break;
                     case "settings-set": SettingsSet(args); break;
+                    case "settings-reset": SettingsReset(); break;
                     default: Help(); break;
                 }
             }
@@ -48,7 +49,14 @@ namespace VDownload
             {
                 string url = args[1];
                 Dictionary<string, string> options = Options.Parse(args[2..]);
-                Youtube.VideoDownload(url, options);
+                if (Str.IfStringContainsStringsFromListOR(url, Global.LINKIND_YOUTUBEVID))
+                {
+                    Youtube.VideoDownload(url, options);
+                }
+                else
+                {
+                    Console.Write(Output.Get(@"output\main\error_wrong_site.out"));
+                }
             }
         }
 
@@ -94,7 +102,7 @@ namespace VDownload
                 }
                 else
                 {
-                    Console.WriteLine(Output.Get(@"output\main\error_wrong_page.out"));
+                    Console.Write(Output.Get(@"output\main\error_wrong_site.out"));
                 }
             }
         }
@@ -109,7 +117,7 @@ namespace VDownload
             }
             else
             {
-                Console.WriteLine(Settings.Get(args[1]));
+                Console.Write(Settings.Get(args[1]));
             }
         }
 
@@ -123,8 +131,15 @@ namespace VDownload
             }
             else
             {
-                Console.WriteLine(Settings.Set(args[1], args[2]));
+                Console.Write(Settings.Set(args[1], args[2]));
             }
+        }
+
+
+        // Resets (deletes) configuration file
+        static void SettingsReset()
+        {
+            Console.Write(Settings.Reset());
         }
     }
 }

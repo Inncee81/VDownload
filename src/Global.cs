@@ -9,8 +9,8 @@ namespace VDownload
     {
         // Informations about program
         public static string PROGRAM_NAME = "VDownload";
-        public static string PROGRAM_VERSION = "0.0.1-dev4";
-        public static string PROGRAM_BUILD = "21164";
+        public static string PROGRAM_VERSION = "0.1-dev1";
+        public static string PROGRAM_BUILD = "21165";
         public static string PROGRAM_REPOSITORY = "https://github.com/mateuszskoczek/VDownload";
         public static Dictionary<string, string> PROGRAM_AUTHORS = new Dictionary<string, string>() {
             {"Mateusz Skoczek", "https://github.com/mateuszskoczek"},
@@ -44,7 +44,8 @@ namespace VDownload
             {"filename", "%title%"},
             {"output_path", Global.PATH_OUTPUT},
             {"video_ext", "mp4"},
-            {"audio_ext", "mp3"}
+            {"audio_ext", "mp3"},
+            {"date_format", "yyyy.MM.dd"},
         };
 
         // Table appearance

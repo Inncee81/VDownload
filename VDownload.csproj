@@ -54,15 +54,23 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="output\ffmpeg\converting_file.out" />
-    <None Remove="output\ffmpeg\merging_streams.out" />
+    <None Remove="output\media_processing\converting_file.out" />
+    <None Remove="output\media_processing\error_file_cannot_be_converted.out" />
+    <None Remove="output\media_processing\error_streams_cannot_be_merged.out" />
+    <None Remove="output\media_processing\merging_streams.out" />
     <None Remove="output\main\error_wrong_site.out" />
+    <None Remove="output\settings\error_default_settings_cannot_be_restored.out" />
+    <None Remove="output\settings\reset.out" />
     <None Remove="output\youtube\delete_temporary.out" />
     <None Remove="output\youtube\done.out" />
     <None Remove="output\youtube\downloading_audio.out" />
     <None Remove="output\youtube\downloading_start.out" />
     <None Remove="output\youtube\downloading_video.out" />
+    <None Remove="output\youtube\error_invalid_link.out" />
     <None Remove="output\youtube\error_invalid_url.out" />
+    <None Remove="output\youtube\error_no_audio_streams_video_unplayable.out" />
+    <None Remove="output\youtube\error_no_video_streams_video_unplayable.out" />
+    <None Remove="output\youtube\error_unplayable_video.out" />
     <None Remove="output\youtube\video_info.out" />
   </ItemGroup>
 

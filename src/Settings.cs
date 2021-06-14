@@ -60,5 +60,20 @@ namespace VDownload
             }
             return output;
         }
+
+        //
+        public static string Reset()
+        {
+            string output = Output.Get(@"output\settings\reset.out");
+            try
+            {
+                Config.Main.deleteFile();
+            }
+            catch
+            {
+                output = Output.Get(@"output\settings\error_default_settings_cannot_be_restored.out");
+            }
+            return output;
+        }
     }
 }

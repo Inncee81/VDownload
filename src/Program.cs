@@ -34,7 +34,7 @@ namespace VDownload
             string output = Output.Get(
                 file: @"output\main\help.out"
             );
-            Console.Write(output);
+            Console.WriteLine(output);
         }
 
 
@@ -55,7 +55,7 @@ namespace VDownload
                 }
                 else
                 {
-                    Console.Write(Output.Get(@"output\main\error_wrong_site.out"));
+                    Console.WriteLine(Output.Get(@"output\main\error_wrong_site.out"));
                 }
             }
         }
@@ -82,7 +82,7 @@ namespace VDownload
                 file: @"output\main\about.out",
                 args: args
             );
-            Console.Write(output);
+            Console.WriteLine(output);
         }
 
 
@@ -102,7 +102,7 @@ namespace VDownload
                 }
                 else
                 {
-                    Console.Write(Output.Get(@"output\main\error_wrong_site.out"));
+                    Console.WriteLine(Output.Get(@"output\main\error_wrong_site.out"));
                 }
             }
         }
@@ -117,7 +117,7 @@ namespace VDownload
             }
             else
             {
-                Console.Write(Settings.Get(args[1]));
+                Console.WriteLine(Settings.Get(args[1]));
             }
         }
 
@@ -131,7 +131,7 @@ namespace VDownload
             }
             else
             {
-                Console.Write(Settings.Set(args[1], args[2]));
+                Console.WriteLine(Settings.Set(args[1], args[2]));
             }
         }
 
@@ -139,7 +139,7 @@ namespace VDownload
         // Resets (deletes) configuration file
         static void SettingsReset()
         {
-            Console.Write(Settings.Reset());
+            Console.WriteLine(Settings.Reset());
         }
     }
 }

@@ -48,7 +48,6 @@ D:\OneDrive\Programming\Projekty\C#\VDownload\bin\Debug\net5.0\output\youtube\do
 D:\OneDrive\Programming\Projekty\C#\VDownload\bin\Debug\net5.0\output\youtube\downloading_start.out
 D:\OneDrive\Programming\Projekty\C#\VDownload\bin\Debug\net5.0\output\youtube\downloading_video.out
 D:\OneDrive\Programming\Projekty\C#\VDownload\bin\Debug\net5.0\output\youtube\error_invalid_link.out
-D:\OneDrive\Programming\Projekty\C#\VDownload\bin\Debug\net5.0\output\youtube\error_invalid_video_url.out
 D:\OneDrive\Programming\Projekty\C#\VDownload\bin\Debug\net5.0\output\youtube\error_no_audio_streams_video_unplayable.out
 D:\OneDrive\Programming\Projekty\C#\VDownload\bin\Debug\net5.0\output\youtube\error_no_video_streams_video_unplayable.out
 D:\OneDrive\Programming\Projekty\C#\VDownload\bin\Debug\net5.0\output\youtube\error_unplayable_video.out
@@ -83,3 +82,7 @@ D:\OneDrive\Programming\Projekty\C#\VDownload\obj\Debug\net5.0\ref\VDownload.dll
 D:\OneDrive\Programming\Projekty\C#\VDownload\obj\Debug\net5.0\VDownload.pdb
 D:\OneDrive\Programming\Projekty\C#\VDownload\obj\Debug\net5.0\VDownload.genruntimeconfig.cache
 D:\OneDrive\Programming\Projekty\C#\VDownload\obj\Debug\net5.0\VDownload.csproj.AssemblyReference.cache
+D:\OneDrive\Programming\Projekty\C#\VDownload\bin\Debug\net5.0\LICENSE
+D:\OneDrive\Programming\Projekty\C#\VDownload\bin\Debug\net5.0\README.md
+D:\OneDrive\Programming\Projekty\C#\VDownload\bin\Debug\net5.0\output\youtube\error_undefined_downloading_video.out
+D:\OneDrive\Programming\Projekty\C#\VDownload\bin\Debug\net5.0\output\youtube\error_undefined_getting_info.out

@@ -8,13 +8,23 @@ VDownload is a universal CLI (command line interface) video downloader. It allow
 </ul>
 
 <h2>Setup</h2>
-This app requires:
+<b>Requirements:</b>
 <ul>
-    <li>Windows 10</li>
+    <li>Architecture: x86/x64/arm64/arm32 (ARM builds are not tested. Feedback is welcome.)</li>
+    <li>Operating system: min. Windows 7
     <li>.NET Runtime (min. version 5.0) [<a href="https://dotnet.microsoft.com/download">LINK</a>]</li>
+    <li>Microsoft Visual C++ 2015 Redistributable [<a href="https://www.microsoft.com/en-US/download/details.aspx?id=48145">LINK</a>]</li>
 </ul>
 VDownload also uses FFmpeg to convert and mux media files, but it is included. If you have FFmpeg installed on your computer, you can change used installation of FFmpeg in settings and delete included FFmpeg folder (for example when you are low on disk space).<br>
-Executable is available <a href="https://github.com/mateuszskoczek/VDownload/releases">HERE</a>.
+Executable is available <a href="https://github.com/mateuszskoczek/VDownload/releases">HERE</a>.<br>
+<br>
+<b>Installation:</b>
+<ol>
+    <li>Download executable suitable for your architecture.</li>
+    <li>Put files in any folder</li>
+    <li>Add folder path to PATH (optional, but if you don't you will have to open terminal in app folder to use app)
+</ol>
+
 
 <h2>Commands, settings & filename template</h2>
 <table>
@@ -130,7 +140,7 @@ Executable is available <a href="https://github.com/mateuszskoczek/VDownload/rel
 </table>
 
 <h2>Issues & Support</h2>
-VDownload is completely free and open source. I developing it in my free time for no money. You can contribute to the development of the application by reporting issues and your ideas <a href="https://github.com/mateuszskoczek/VDownload/issues">HERE</a>. Please attach informations about VDownload version which you use and your operating system, when you create a new issue. Also make sure, that your problem is not already described and resolved.
+VDownload is completely free and open source. I developing it in my free time for no money. You can contribute to the development of the application by reporting issues and your ideas <a href="https://github.com/mateuszskoczek/VDownload/issues">HERE</a>. Please attach informations about VDownload version which you use, your operating system and video which you want to download, when you create a new issue. Also make sure, that your problem is not already described and resolved.
 
 <h2>For developers</h2>
 VDownload uses the following libraries:

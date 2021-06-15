@@ -90,7 +90,7 @@ namespace VDownload
                     videoStreamsData,
                     audioStreamsData,
                 };
-                Console.Write(Output.Get(
+                Console.WriteLine(Output.Get(
                     file: @"output\youtube\video_info.out",
                     args: args
                 ));
@@ -98,6 +98,10 @@ namespace VDownload
             catch (VideoUnavailableException)
             {
                 Console.Write(Output.Get(@"output\youtube\error_invalid_link.out", args: new() { url }));
+            }
+            catch
+            {
+                Console.Write(Output.Get(@"output\youtube\error_undefined_getting_info.out"));
             }
         }
 
@@ -226,15 +230,19 @@ namespace VDownload
                         File.Delete(p);
                     }
                 }
-                Console.Write(Output.Get(@"output\youtube\done.out", upSP: false));
+                Console.WriteLine(Output.Get(@"output\youtube\done.out", upSP: false));
             }
             catch (VideoUnavailableException)
             {
-                Console.Write(Output.Get(@"output\youtube\error_invalid_link.out", args: new() { url }));
+                Console.WriteLine(Output.Get(@"output\youtube\error_invalid_link.out", args: new() { url }));
             }
             catch (VideoUnplayableException)
             {
-                Console.Write(Output.Get(@"output\youtube\error_unplayable_video.out", args: new() { url }));
+                Console.WriteLine(Output.Get(@"output\youtube\error_unplayable_video.out", args: new() { url }));
+            }
+            catch
+            {
+                Console.WriteLine(Output.Get(@"output\youtube\error_undefined_downloading_video.out"));
             }
         }
 

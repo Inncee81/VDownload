@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
+    <Platforms>AnyCPU;x86;x64;ARM64;ARM32</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -70,6 +71,8 @@
     <None Remove="output\youtube\error_invalid_url.out" />
     <None Remove="output\youtube\error_no_audio_streams_video_unplayable.out" />
     <None Remove="output\youtube\error_no_video_streams_video_unplayable.out" />
+    <None Remove="output\youtube\error_undefined_downloading_video.out" />
+    <None Remove="output\youtube\error_undefined_getting_info.out" />
     <None Remove="output\youtube\error_unplayable_video.out" />
     <None Remove="output\youtube\video_info.out" />
   </ItemGroup>

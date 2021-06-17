@@ -120,27 +120,27 @@ namespace VDownload
                     {"%author%", metadata["author"]},
                     {"%pub_date%", metadata["date"]},
                     {"%id%", metadata["id"]},
-                    {"%act_date%", DateTime.Now.ToString(Config.Main.R_key("date_format"))},
+                    {"%act_date%", DateTime.Now.ToString(Config.Main.ReadKey("date_format"))},
                     {"%duration%", metadata["duration"]},
                     {"%views%", metadata["views"]},
                 };
-                string filename = Config.Main.R_key("filename");
+                string filename = Config.Main.ReadKey("filename");
                 if (options.ContainsKey("filename") && !(options["filename"] == null))
                 {
                     filename = options["filename"];
                 }
                 filename = Filename.Parse(filename, filenameCode);
-                string output_path = Config.Main.R_key("output_path");
+                string output_path = Config.Main.ReadKey("output_path");
                 if (options.ContainsKey("output_path") && !(options["output_path"] == null))
                 {
                     output_path = options["output_path"];
                 }
-                string video_ext = Config.Main.R_key("video_ext");
+                string video_ext = Config.Main.ReadKey("video_ext");
                 if (options.ContainsKey("video_ext") && !(options["video_ext"] == null))
                 {
                     video_ext = options["video_ext"];
                 }
-                string audio_ext = Config.Main.R_key("audio_ext");
+                string audio_ext = Config.Main.ReadKey("audio_ext");
                 if (options.ContainsKey("audio_ext") && !(options["audio_ext"] == null))
                 {
                     audio_ext = options["audio_ext"];
@@ -257,7 +257,7 @@ namespace VDownload
             var data = Client.Videos.GetAsync(url).Result;
             metadata["title"] = data.Title;
             metadata["author"] = data.Author.Title;
-            metadata["date"] = data.UploadDate.Date.ToString(Config.Main.R_key("date_format"));
+            metadata["date"] = data.UploadDate.Date.ToString(Config.Main.ReadKey("date_format"));
             metadata["duration"] = data.Duration.ToString();
             metadata["views"] = data.Engagement.ViewCount.ToString();
             metadata["rating"] = String.Format("{0}/{1}", data.Engagement.LikeCount.ToString(), data.Engagement.DislikeCount.ToString());

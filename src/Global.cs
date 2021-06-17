@@ -10,8 +10,8 @@ namespace VDownload
     {
         // Informations about program
         public static string PROGRAM_NAME = "VDownload";
-        public static string PROGRAM_VERSION = "0.1";
-        public static string PROGRAM_BUILD_ID = "21166";
+        public static string PROGRAM_VERSION = "0.2-dev1";
+        public static string PROGRAM_BUILD_ID = "21168";
         public static string PROGRAM_REPOSITORY = "https://github.com/mateuszskoczek/VDownload";
         public static Dictionary<string, string> PROGRAM_AUTHORS = new Dictionary<string, string>() {
             {"Mateusz Skoczek", "https://github.com/mateuszskoczek"},
@@ -31,7 +31,7 @@ namespace VDownload
             Path.GetTempPath(),
             "VDownload"
         );
-        public static string PATH_FFMPEG = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase).Replace(@"file:\", "") + @"\ffmpeg";
+        public static string PATH_FFMPEG = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location).Replace(@"file:\", "") + @"\ffmpeg";
 
         // Links indicators
         public static List<string> LINKIND_YOUTUBEVID = new()

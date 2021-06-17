@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\OneDrive\\Programming\\Projekty\\C#\\VDownload\\VDownload.csproj": {}
+    "D:\\OneDrive\\Programming\\Projekty\\VDownload\\VDownload.csproj": {}
   },
   "projects": {
-    "D:\\OneDrive\\Programming\\Projekty\\C#\\VDownload\\VDownload.csproj": {
+    "D:\\OneDrive\\Programming\\Projekty\\VDownload\\VDownload.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OneDrive\\Programming\\Projekty\\C#\\VDownload\\VDownload.csproj",
+        "projectUniqueName": "D:\\OneDrive\\Programming\\Projekty\\VDownload\\VDownload.csproj",
         "projectName": "VDownload",
-        "projectPath": "D:\\OneDrive\\Programming\\Projekty\\C#\\VDownload\\VDownload.csproj",
+        "projectPath": "D:\\OneDrive\\Programming\\Projekty\\VDownload\\VDownload.csproj",
         "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
-        "outputPath": "D:\\OneDrive\\Programming\\Projekty\\C#\\VDownload\\obj\\",
+        "outputPath": "D:\\OneDrive\\Programming\\Projekty\\VDownload\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -25,7 +25,8 @@
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
@@ -42,6 +43,24 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "ConsoleTableExt": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
+            "FFMpegCore": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "LightConfig": {
+              "target": "Package",
+              "version": "[0.1.0, )"
+            },
+            "YoutubeExplode": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

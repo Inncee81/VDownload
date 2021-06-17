@@ -10,32 +10,14 @@
     <Reference Include="AdditionalMethods">
       <HintPath>lib\AdditionalMethods.dll</HintPath>
     </Reference>
-    <Reference Include="AngleSharp">
-      <HintPath>lib\AngleSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="ConfigParser">
-      <HintPath>lib\ConfigParser.dll</HintPath>
-    </Reference>
     <Reference Include="ConsoleOptionsParser">
       <HintPath>lib\ConsoleOptionsParser.dll</HintPath>
-    </Reference>
-    <Reference Include="ConsoleTableExt">
-      <HintPath>lib\ConsoleTableExt.dll</HintPath>
-    </Reference>
-    <Reference Include="FFMpegCore">
-      <HintPath>lib\FFMpegCore.dll</HintPath>
     </Reference>
     <Reference Include="FilenameParser">
       <HintPath>lib\FilenameParser.dll</HintPath>
     </Reference>
-    <Reference Include="Instances">
-      <HintPath>lib\Instances.dll</HintPath>
-    </Reference>
     <Reference Include="OutputParser">
       <HintPath>lib\OutputParser.dll</HintPath>
-    </Reference>
-    <Reference Include="YoutubeExplode">
-      <HintPath>lib\YoutubeExplode.dll</HintPath>
     </Reference>
   </ItemGroup>
 
@@ -75,6 +57,13 @@
     <None Remove="output\youtube\error_undefined_getting_info.out" />
     <None Remove="output\youtube\error_unplayable_video.out" />
     <None Remove="output\youtube\video_info.out" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ConsoleTableExt" Version="3.1.7" />
+    <PackageReference Include="FFMpegCore" Version="4.3.0" />
+    <PackageReference Include="LightConfig" Version="0.1.0" />
+    <PackageReference Include="YoutubeExplode" Version="6.0.2" />
   </ItemGroup>
 
   <ItemGroup>

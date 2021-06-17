@@ -10,7 +10,7 @@ namespace VDownload
         {
             string output;
             string value;
-            if (Config.Main.R_all().TryGetValue(key, out value))
+            if (Config.Main.ReadAll().TryGetValue(key, out value))
             {
                 List<string> args = new() {
                     key,
@@ -40,14 +40,14 @@ namespace VDownload
             {
                 output = Output.Get(@"output\settings\error_value_is_an_empty_string.out");
             }
-            else if (!(Config.Main.R_all().ContainsKey(key)))
+            else if (!(Config.Main.ReadAll().ContainsKey(key)))
             {
                 output = Output.Get(@"output\settings\error_key_does_not_exists.out");
             }
             else
             {
-                string oldValue = Config.Main.R_key(key);
-                Config.Main.W(key, value);
+                string oldValue = Config.Main.ReadKey(key);
+                Config.Main.Write(key, value);
                 List<string> args = new() {
                     key,
                     oldValue,
@@ -67,7 +67,7 @@ namespace VDownload
             string output = Output.Get(@"output\settings\reset.out");
             try
             {
-                Config.Main.deleteFile();
+                Config.Main.ResetFile();
             }
             catch
             {

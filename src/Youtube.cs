@@ -6,7 +6,7 @@ using YoutubeExplode;
 using YoutubeExplode.Exceptions;
 using YoutubeExplode.Videos.Streams;
 using ConsoleTableExt;
-using FilenameParser;
+using VDownload.Parsers;
 
 namespace VDownload
 {
@@ -128,7 +128,7 @@ namespace VDownload
                 {
                     filename = options["filename"];
                 }
-                filename = Filename.Parse(filename, filenameCode);
+                filename = Filename.Get(filename, filenameCode);
                 string output_path = Config.Main.ReadKey("output_path");
                 if (options.ContainsKey("output_path") && !(options["output_path"] == null))
                 {

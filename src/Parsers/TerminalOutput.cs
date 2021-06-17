@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace VDownload
+namespace VDownload.Parsers
 {
     class TerminalOutput
     {

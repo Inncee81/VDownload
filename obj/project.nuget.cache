@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "NbNj/m9xSTdl+9L7lOi+ucVa9KTeI20p5dWc6QFtZd1+uUSym/mSaJq0ScxmOVnaLcIb9idShJxABntA+1H2pA==",
+  "dgSpecHash": "LKq57SDwc8xJeZ1GONjtYhalSF4Qe8RAW6CzIPUW1VhXgQy5bWKePHvOGBlCL8UCfUo4VhQqDeZXeqS6VGKWHw==",
   "success": true,
   "projectFilePath": "D:\\OneDrive\\Programming\\Projekty\\VDownload\\VDownload.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "C:\\Users\\mateu\\.nuget\\packages\\lightconfig\\0.1.0\\lightconfig.0.1.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\octokit\\0.50.0\\octokit.0.50.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\system.drawing.common\\5.0.2\\system.drawing.common.5.0.2.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.0\\system.runtime.compilerservices.unsafe.4.5.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\system.text.encoding.codepages\\4.5.0\\system.text.encoding.codepages.4.5.0.nupkg.sha512",

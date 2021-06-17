@@ -81,4 +81,6 @@ VDownload uses the following libraries:
 - FFMpegCore [[LINK]](https://github.com/rosenbjerg/FFMpegCore)
 - YoutubeExplode [[LINK]](https://github.com/Tyrrrz/YoutubeExplode)
 - LightConfig [[LINK]](https://github.com/mateuszskoczek/LightConfig)
+- Octokit [[LINK]](https://github.com/octokit/octokit.net)
+
 FFmpeg is not included in repository, because of file size limitations. You have to download FFmpeg by yourself and put executables in "ffmpeg" directory.

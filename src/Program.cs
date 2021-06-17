@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using AdditionalMethods;
-using ConsoleOptionsParser;
+using VDownload.Parsers;
 
 namespace VDownload
 {
@@ -73,19 +72,16 @@ namespace VDownload
             else
             {
                 string url = args[1];
-                if (Str.IfStringContainsStringsFromListOR(url, Global.LinkIndicators.YOUTUBE_S))
+                switch (UrlWebpage.Get(url))
                 {
-                    Youtube.VideoInfo(url);
-                }
-                else
-                {
-                    Console.WriteLine(TerminalOutput.Get(@"output\main\error_wrong_site.out"));
+                    case "youtube_single": Youtube.VideoInfo(url); break;
+                    default: Console.WriteLine(TerminalOutput.Get(@"output\main\error_wrong_site.out")); break;
                 }
             }
         }
 
 
-        // Downloading
+        // Downloading video (or playlist)
         private static void Download(string[] args)
         {
             if (args.Length < 2)
@@ -95,14 +91,11 @@ namespace VDownload
             else
             {
                 string url = args[1];
-                Dictionary<string, string> options = Options.Parse(args[2..]);
-                if (Str.IfStringContainsStringsFromListOR(url, Global.LinkIndicators.YOUTUBE_S))
+                Dictionary<string, string> options = Options.Get(args[2..]);
+                switch (UrlWebpage.Get(url))
                 {
-                    Youtube.VideoDownload(url, options);
-                }
-                else
-                {
-                    Console.WriteLine(TerminalOutput.Get(@"output\main\error_wrong_site.out"));
+                    case "youtube_single": Youtube.VideoDownload(url, options); break;
+                    default: Console.WriteLine(TerminalOutput.Get(@"output\main\error_wrong_site.out")); break;
                 }
             }
         }
@@ -117,7 +110,24 @@ namespace VDownload
             }
             else
             {
-                Console.WriteLine(Settings.Get(args[1]));
+                string output;
+                string key = args[1].ToLower();
+                if (Config.Main.ReadAll().TryGetValue(key, out string value))
+                {
+                    output = TerminalOutput.Get(
+                        file: @"output\settings\get_settings.out",
+                        args: new()
+                        {
+                            key,
+                            value
+                        }
+                    );
+                }
+                else
+                {
+                    output = TerminalOutput.Get(@"output\main\error_key_does_not_exists.out");
+                }
+                Console.WriteLine(output);
             }
         }
 
@@ -131,7 +141,36 @@ namespace VDownload
             }
             else
             {
-                Console.WriteLine(Settings.Set(args[1], args[2]));
+                string output;
+                string key = args[1].ToLower();
+                string value = args[2];
+                if (key.Trim() == "")
+                {
+                    output = TerminalOutput.Get(@"output\main\error_key_is_an_empty_string.out");
+                }
+                else if (value.Trim() == "")
+                {
+                    output = TerminalOutput.Get(@"output\main\error_value_is_an_empty_string.out");
+                }
+                else if (!(Config.Main.ReadAll().ContainsKey(key)))
+                {
+                    output = TerminalOutput.Get(@"output\main\error_key_does_not_exists.out");
+                }
+                else
+                {
+                    string oldValue = Config.Main.ReadKey(key);
+                    Config.Main.Write(key, value);
+                    output = TerminalOutput.Get(
+                        file: @"output\main\set_settings.out", 
+                        args: new()
+                        {
+                            key,
+                            oldValue,
+                            value
+                        }
+                    );
+                }
+                Console.WriteLine(output);
             }
         }
 
@@ -139,7 +178,16 @@ namespace VDownload
         // Resets (deletes) configuration file
         private static void SettingsReset()
         {
-            Console.WriteLine(Settings.Reset());
+            string output = TerminalOutput.Get(@"output\main\reset_settings.out");
+            try
+            {
+                Config.Main.ResetFile();
+            }
+            catch
+            {
+                output = TerminalOutput.Get(@"output\main\error_default_settings_cannot_be_restored.out");
+            }
+            Console.WriteLine(output);
         }
     }
 }

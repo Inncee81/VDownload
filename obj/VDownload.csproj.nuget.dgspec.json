@@ -56,6 +56,10 @@
               "target": "Package",
               "version": "[0.1.0, )"
             },
+            "Octokit": {
+              "target": "Package",
+              "version": "[0.50.0, )"
+            },
             "YoutubeExplode": {
               "target": "Package",
               "version": "[6.0.2, )"

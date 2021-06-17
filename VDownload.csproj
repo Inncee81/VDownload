@@ -7,18 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="AdditionalMethods">
-      <HintPath>lib\AdditionalMethods.dll</HintPath>
-    </Reference>
-    <Reference Include="ConsoleOptionsParser">
-      <HintPath>lib\ConsoleOptionsParser.dll</HintPath>
-    </Reference>
-    <Reference Include="FilenameParser">
-      <HintPath>lib\FilenameParser.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
 	  <Content Include="output\**">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Content>
@@ -39,8 +27,6 @@
     <None Remove="output\media_processing\error_streams_cannot_be_merged.out" />
     <None Remove="output\media_processing\merging_streams.out" />
     <None Remove="output\main\error_wrong_site.out" />
-    <None Remove="output\settings\error_default_settings_cannot_be_restored.out" />
-    <None Remove="output\settings\reset.out" />
     <None Remove="output\youtube\delete_temporary.out" />
     <None Remove="output\youtube\done.out" />
     <None Remove="output\youtube\downloading_audio.out" />
@@ -60,6 +46,7 @@
     <PackageReference Include="ConsoleTableExt" Version="3.1.7" />
     <PackageReference Include="FFMpegCore" Version="4.3.0" />
     <PackageReference Include="LightConfig" Version="0.1.0" />
+    <PackageReference Include="Octokit" Version="0.50.0" />
     <PackageReference Include="YoutubeExplode" Version="6.0.2" />
   </ItemGroup>
 

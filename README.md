@@ -2,7 +2,7 @@
 
 VDownload is a universal CLI (command line interface) video downloader. It allows you to download video from the following websites:
 - YouTube (single video)
-- YouTube (playlist) *[planned for version 0.2]*
+- YouTube (playlist)
 - Twitch *[planned for version 0.3]*
 - ... *[more pages will be added later]*
 
@@ -10,7 +10,7 @@ VDownload is a universal CLI (command line interface) video downloader. It allow
 
 **Requirements:**
 
-- Architecture: x86/x64/arm64/arm32 (ARM builds are not tested. Feedback is welcome.)
+- Architecture: x86/x64/arm64/arm32 (ARM builds have not been tested. Feedback is welcome.)
 - Operating system: min. Windows 7
 - NET Runtime (min. version 5.0) [[LINK]](https://dotnet.microsoft.com/download)
 - Microsoft Visual C++ 2015 Redistributable [[LINK]](https://www.microsoft.com/en-US/download/details.aspx?id=48145)
@@ -30,49 +30,14 @@ Executable is available [HERE](https://github.com/mateuszskoczek/VDownload/relea
 
 ## Commands, settings & filename template
 
-<table>
-    <tr>
-        <th>Command</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td><code>about</code></td>
-        <td>Informations about this program</td>
-    </tr>
-    <tr>
-        <td><code>info &lt;link&gt;</code></td>
-        <td>Informations about video (metadata and available streams)</td>
-    </tr>
-    <tr>
-        <td><code>download &lt;link&gt; [options]</code></td>
-        <td>Download video</td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            Options:<br>
-            <code>--onlyvideo</code> (download only video)<br>
-            <code>--onlyaudio</code> (download only audio)<br>
-            <code>--video=&lt;id&gt;</code> (download video stream with specified id, best if not specified)<br>
-            <code>--audio=&lt;id&gt;</code> (download audio stream with specified id, best if not specified)<br>
-            <code>--output_path=&lt;path&gt;</code> (output file path)<br>
-            <code>--filename=&lt;filename&gt;</code> (filename; template)<br>
-            <code>--video_ext=&lt;extension&gt;</code> (video file extension)<br>
-            <code>--audio_ext=&lt;extension&gt;</code> (audio file extension)
-        </td>
-    </tr>
-    <tr>
-        <td><code>settings-get &lt;key&gt;</code></td>
-        <td>Return value of the specified key</td>
-    </tr>
-    <tr>
-        <td><code>settings-set &lt;key&gt; &lt;value&gt;</code></td>
-        <td>Set value of the specified key</td>
-    </tr>
-    <tr>
-        <td><code>settings-reset</code></td>
-        <td>Restore default settings</td>
-    </tr>
-</table>
+| Command                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `about`                      | Informations about this program                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `info <link>`                | Informations about video (metadata and available streams)                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `download <link> [options]`  | Download video<br><br>Options:<br>`--onlyvideo` (download only video)<br>`--onlyaudio` (download only audio)<br>`--video=<id>` (download video stream with specified id; best if not specified)<br>`--audio=<id>` (download audio stream with specified id; best if not specified)<br>`--output_path=<path>` (output file path)<br>`--filename=<filename>` (filename; template)<br>`--video_ext=<extension>` (video file extension)<br>`--audio_ext=<extension>` (audio file extension) |
+| `settings-get <key>`         | Return value of the specified key                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `settings-set <key> <value>` | Set value of the specified key                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| `settings-reset`             | Restore default settings                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 
 Command example: `vdownload download https://www.youtube.com/watch?v=dQw4w9WgXcQ --onlyvideo --video=5 --filename="absolutely nothing suspicious here"`
 

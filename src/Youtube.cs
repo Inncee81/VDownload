@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using YoutubeExplode;
 using YoutubeExplode.Exceptions;
 using YoutubeExplode.Videos.Streams;
-using OutputParser;
 using ConsoleTableExt;
 using FilenameParser;
 
@@ -41,12 +40,12 @@ namespace VDownload
                     videoStreamsData = ConsoleTableBuilder
                         .From(videoStreamsTable)
                         .WithColumn("ID", "Bitrate", "Container", "Quality", "Codec", "Size")
-                        .WithCharMapDefinition(CharMapDefinition.FramePipDefinition, Global.TABLEAPPEARANCE)
+                        .WithCharMapDefinition(CharMapDefinition.FramePipDefinition, Global.TableAppearance.STREAMS)
                         .Export().ToString().Trim();
                 }
                 catch (VideoUnplayableException)
                 {
-                    videoStreamsData = Output.Get(@"output\youtube\error_no_video_streams_video_unplayable.out", false, false);
+                    videoStreamsData = TerminalOutput.Get(@"output\youtube\error_no_video_streams_video_unplayable.out", false, false);
                 }
 
                 // Audio streams
@@ -68,12 +67,12 @@ namespace VDownload
                     audioStreamsData = ConsoleTableBuilder
                         .From(audioStreamsTable)
                         .WithColumn("ID", "Bitrate", "Container", "Codec", "Size")
-                        .WithCharMapDefinition(CharMapDefinition.FramePipDefinition, Global.TABLEAPPEARANCE)
+                        .WithCharMapDefinition(CharMapDefinition.FramePipDefinition, Global.TableAppearance.STREAMS)
                         .Export().ToString().Trim();
                 }
                 catch (VideoUnplayableException)
                 {
-                    audioStreamsData = Output.Get(@"output\youtube\error_no_audio_streams_video_unplayable.out", false, false);
+                    audioStreamsData = TerminalOutput.Get(@"output\youtube\error_no_audio_streams_video_unplayable.out", false, false);
                 }
 
                 // Print informations
@@ -90,18 +89,18 @@ namespace VDownload
                     videoStreamsData,
                     audioStreamsData,
                 };
-                Console.WriteLine(Output.Get(
+                Console.WriteLine(TerminalOutput.Get(
                     file: @"output\youtube\video_info.out",
                     args: args
                 ));
             }
             catch (VideoUnavailableException)
             {
-                Console.Write(Output.Get(@"output\youtube\error_invalid_link.out", args: new() { url }));
+                Console.Write(TerminalOutput.Get(@"output\youtube\error_invalid_link.out", args: new() { url }));
             }
             catch
             {
-                Console.Write(Output.Get(@"output\youtube\error_undefined_getting_info.out"));
+                Console.Write(TerminalOutput.Get(@"output\youtube\error_undefined_getting_info.out"));
             }
         }
 
@@ -163,7 +162,7 @@ namespace VDownload
                     if (options.ContainsKey("video") && options["video"] != null && int.TryParse(options["video"], out int id)) { }
                     else { id = SelectBestStream(streamsData); }
                     args.Add(String.Format("Video stream ID: {0} ({1})", id, streamsData[id][2]));
-                    Console.WriteLine(Output.Get(@"output\youtube\downloading_start.out", args: args));
+                    Console.WriteLine(TerminalOutput.Get(@"output\youtube\downloading_start.out", args: args));
                     string tempPath = DownloadVideoStream(streams, id);
                     string outPath = String.Format(@"{0}\{1}.{2}", output_path, filename, video_ext);
                     if (Path.GetExtension(tempPath).Trim('.') == video_ext)
@@ -184,7 +183,7 @@ namespace VDownload
                     if (options.ContainsKey("audio") && options["audio"] != null && int.TryParse(options["audio"], out int id)) { }
                     else { id = SelectBestStream(streamsData); }
                     args.Add(String.Format("Audio stream ID: {0} ({1})", id, streamsData[id][0]));
-                    Console.WriteLine(Output.Get(@"output\youtube\downloading_start.out", args: args));
+                    Console.WriteLine(TerminalOutput.Get(@"output\youtube\downloading_start.out", args: args));
                     string tempPath = DownloadAudioStream(streams, id);
                     string outPath = String.Format(@"{0}\{1}.{2}", output_path, filename, audio_ext);
                     if (Path.GetExtension(tempPath).Trim('.') == audio_ext)
@@ -212,7 +211,7 @@ namespace VDownload
                     else { audio_id = SelectBestStream(streamsAudioData); }
 
                     args.Add(String.Format("Video stream ID: {0} ({1}) | Audio stream ID: {2} ({3})", video_id, streamsVideoData[video_id][2], audio_id, streamsAudioData[audio_id][0]));
-                    Console.WriteLine(Output.Get(@"output\youtube\downloading_start.out", args: args));
+                    Console.WriteLine(TerminalOutput.Get(@"output\youtube\downloading_start.out", args: args));
 
                     string tempVideoPath = DownloadVideoStream(streamsVideo, video_id);
                     string tempAudioPath = DownloadAudioStream(streamsAudio, audio_id);
@@ -224,25 +223,25 @@ namespace VDownload
                 }
                 if (tempFiles.Count > 0)
                 {
-                    Console.WriteLine(Output.Get(@"output\youtube\delete_temporary.out", upSP: false, downSP: false));
+                    Console.WriteLine(TerminalOutput.Get(@"output\youtube\delete_temporary.out", upSP: false, downSP: false));
                     foreach (string p in tempFiles)
                     {
                         File.Delete(p);
                     }
                 }
-                Console.WriteLine(Output.Get(@"output\youtube\done.out", upSP: false));
+                Console.WriteLine(TerminalOutput.Get(@"output\youtube\done.out", upSP: false));
             }
             catch (VideoUnavailableException)
             {
-                Console.WriteLine(Output.Get(@"output\youtube\error_invalid_link.out", args: new() { url }));
+                Console.WriteLine(TerminalOutput.Get(@"output\youtube\error_invalid_link.out", args: new() { url }));
             }
             catch (VideoUnplayableException)
             {
-                Console.WriteLine(Output.Get(@"output\youtube\error_unplayable_video.out", args: new() { url }));
+                Console.WriteLine(TerminalOutput.Get(@"output\youtube\error_unplayable_video.out", args: new() { url }));
             }
             catch
             {
-                Console.WriteLine(Output.Get(@"output\youtube\error_undefined_downloading_video.out"));
+                Console.WriteLine(TerminalOutput.Get(@"output\youtube\error_undefined_downloading_video.out"));
             }
         }
 
@@ -353,10 +352,10 @@ namespace VDownload
         private static string DownloadVideoStream(Dictionary<int, Tuple<string[], VideoOnlyStreamInfo>> streams, int id)
         {
             var Client = new YoutubeClient();
-            Directory.CreateDirectory(Global.PATH_TEMP);
-            string tempPath = String.Format(@"{0}\video.{1}", Global.PATH_TEMP, streams[id].Item1[1]);
+            Directory.CreateDirectory(Global.Paths.TEMP);
+            string tempPath = String.Format(@"{0}\video.{1}", Global.Paths.TEMP, streams[id].Item1[1]);
 
-            Console.Write(Output.Get(@"output\youtube\downloading_video.out", upSP: false, downSP: false));
+            Console.Write(TerminalOutput.Get(@"output\youtube\downloading_video.out", upSP: false, downSP: false));
             Stopwatch downloadTime = new Stopwatch();
             downloadTime.Start();
             Client.Videos.Streams.DownloadAsync(streams[id].Item2, tempPath).AsTask().Wait();
@@ -370,10 +369,10 @@ namespace VDownload
         private static string DownloadAudioStream(Dictionary<int, Tuple<string[], AudioOnlyStreamInfo>> streams, int id)
         {
             var Client = new YoutubeClient();
-            Directory.CreateDirectory(Global.PATH_TEMP);
-            string tempPath = String.Format(@"{0}\audio.{1}", Global.PATH_TEMP, streams[id].Item1[1]);
+            Directory.CreateDirectory(Global.Paths.TEMP);
+            string tempPath = String.Format(@"{0}\audio.{1}", Global.Paths.TEMP, streams[id].Item1[1]);
 
-            Console.Write(Output.Get(@"output\youtube\downloading_audio.out", upSP: false, downSP: false));
+            Console.Write(TerminalOutput.Get(@"output\youtube\downloading_audio.out", upSP: false, downSP: false));
             Stopwatch downloadTime = new Stopwatch();
             downloadTime.Start();
             Client.Videos.Streams.DownloadAsync(streams[id].Item2, tempPath).AsTask().Wait();

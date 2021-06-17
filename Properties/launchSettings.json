@@ -1,8 +1,7 @@
 {
   "profiles": {
     "VDownload": {
-      "commandName": "Project",
-      "commandLineArgs": "download https://www.youtube.com/watch?v=3Ygrq51-z1w"
+      "commandName": "Project"
     }
   }
 }

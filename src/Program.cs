@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using OutputParser;
 using AdditionalMethods;
 using ConsoleOptionsParser;
 
@@ -29,17 +28,65 @@ namespace VDownload
 
 
         // Commands and settings keys list
-        static void Help()
+        private static void Help()
         {
-            string output = Output.Get(
+            Console.WriteLine(TerminalOutput.Get(
                 file: @"output\main\help.out"
-            );
-            Console.WriteLine(output);
+            ));
+        }
+
+
+        // Informations about program
+        private static void About()
+        {
+            string librariesUsedInApp = "";
+            foreach (KeyValuePair<string, string> e in Global.ProgramInfo.LIBRARIES)
+            {
+                librariesUsedInApp += String.Format("- {0} ({1})\n", e.Key, e.Value);
+            }
+            Console.WriteLine(TerminalOutput.Get(
+                file: @"output\main\about.out",
+                args: new()
+                {
+                    Global.ProgramInfo.VERSION,
+                    Global.ProgramInfo.BUILD_ID,
+                    Global.ProgramInfo.AUTHOR_NAME,
+                    Global.ProgramInfo.AUTHOR_GITHUB,
+                    Global.ProgramInfo.REPOSITORY,
+                    librariesUsedInApp.TrimEnd(),
+                    Global.ProgramInfo.DONATION_LINK,
+                    Global.ProgramInfo.AUTHOR_NAME,
+                    Global.ProgramInfo.PROJECT_START,
+                    Global.ProgramInfo.PROJECT_END,
+                }
+            ));
+        }
+
+
+        // Informations about specified video (or playlist)
+        private static void Info(string[] args)
+        {
+            if (args.Length < 2)
+            {
+                Help();
+            }
+            else
+            {
+                string url = args[1];
+                if (Str.IfStringContainsStringsFromListOR(url, Global.LinkIndicators.YOUTUBE_S))
+                {
+                    Youtube.VideoInfo(url);
+                }
+                else
+                {
+                    Console.WriteLine(TerminalOutput.Get(@"output\main\error_wrong_site.out"));
+                }
+            }
         }
 
 
         // Downloading
-        static void Download(string[] args)
+        private static void Download(string[] args)
         {
             if (args.Length < 2)
             {
@@ -49,67 +96,20 @@ namespace VDownload
             {
                 string url = args[1];
                 Dictionary<string, string> options = Options.Parse(args[2..]);
-                if (Str.IfStringContainsStringsFromListOR(url, Global.LINKIND_YOUTUBEVID))
+                if (Str.IfStringContainsStringsFromListOR(url, Global.LinkIndicators.YOUTUBE_S))
                 {
                     Youtube.VideoDownload(url, options);
                 }
                 else
                 {
-                    Console.WriteLine(Output.Get(@"output\main\error_wrong_site.out"));
-                }
-            }
-        }
-
-
-        // Informations about program
-        static void About()
-        {
-            string authorsSegment = "";
-            foreach (KeyValuePair<string, string> entry in Global.PROGRAM_AUTHORS)
-            {
-                authorsSegment += String.Format("{0} ({1})\n", entry.Key, entry.Value);
-            }
-            List<string> args = new() {
-                Global.PROGRAM_NAME,
-                Global.PROGRAM_VERSION,
-                Global.PROGRAM_BUILD_ID,
-                Global.PROGRAM_REPOSITORY,
-                authorsSegment.TrimEnd(),
-                Global.PROGRAM_DATE_START,
-                Global.PROGRAM_DATE_LAST,
-            };
-            string output = Output.Get(
-                file: @"output\main\about.out",
-                args: args
-            );
-            Console.WriteLine(output);
-        }
-
-
-        // Informations about specified video (or playlist)
-        static void Info(string[] args)
-        {
-            if (args.Length < 2)
-            {
-                Help();
-            }
-            else
-            {
-                string url = args[1];
-                if (Str.IfStringContainsStringsFromListOR(url, Global.LINKIND_YOUTUBEVID))
-                {
-                    Youtube.VideoInfo(url);
-                }
-                else
-                {
-                    Console.WriteLine(Output.Get(@"output\main\error_wrong_site.out"));
+                    Console.WriteLine(TerminalOutput.Get(@"output\main\error_wrong_site.out"));
                 }
             }
         }
 
 
         // Returns value of specified settings key
-        static void SettingsGet(string[] args)
+        private static void SettingsGet(string[] args)
         {
             if (args.Length < 2)
             {
@@ -123,7 +123,7 @@ namespace VDownload
 
 
         // Sets value of specified settings key
-        static void SettingsSet(string[] args)
+        private static void SettingsSet(string[] args)
         {
             if (args.Length < 3)
             {
@@ -137,7 +137,7 @@ namespace VDownload
 
 
         // Resets (deletes) configuration file
-        static void SettingsReset()
+        private static void SettingsReset()
         {
             Console.WriteLine(Settings.Reset());
         }

@@ -1,5 +1,4 @@
-﻿using OutputParser;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace VDownload
 {
@@ -16,14 +15,14 @@ namespace VDownload
                     key,
                     value
                 };
-                output = Output.Get(
+                output = TerminalOutput.Get(
                     file: @"output\settings\get.out",
                     args: args
                 );
             }
             else
             {
-                output = Output.Get(@"output\settings\error_key_does_not_exists.out");
+                output = TerminalOutput.Get(@"output\settings\error_key_does_not_exists.out");
             }
             return output;
         }
@@ -34,15 +33,15 @@ namespace VDownload
             string output;
             if (key.Trim() == "")
             {
-                output = Output.Get(@"output\settings\error_key_is_an_empty_string.out");
+                output = TerminalOutput.Get(@"output\settings\error_key_is_an_empty_string.out");
             }
             else if (value.Trim() == "")
             {
-                output = Output.Get(@"output\settings\error_value_is_an_empty_string.out");
+                output = TerminalOutput.Get(@"output\settings\error_value_is_an_empty_string.out");
             }
             else if (!(Config.Main.ReadAll().ContainsKey(key)))
             {
-                output = Output.Get(@"output\settings\error_key_does_not_exists.out");
+                output = TerminalOutput.Get(@"output\settings\error_key_does_not_exists.out");
             }
             else
             {
@@ -53,7 +52,7 @@ namespace VDownload
                     oldValue,
                     value
                 };
-                output = Output.Get(
+                output = TerminalOutput.Get(
                     file: @"output\settings\set.out",
                     args: args
                 );
@@ -64,14 +63,14 @@ namespace VDownload
         //
         public static string Reset()
         {
-            string output = Output.Get(@"output\settings\reset.out");
+            string output = TerminalOutput.Get(@"output\settings\reset.out");
             try
             {
                 Config.Main.ResetFile();
             }
             catch
             {
-                output = Output.Get(@"output\settings\error_default_settings_cannot_be_restored.out");
+                output = TerminalOutput.Get(@"output\settings\error_default_settings_cannot_be_restored.out");
             }
             return output;
         }

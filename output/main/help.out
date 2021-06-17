@@ -1,23 +1,51 @@
-List of commands:
-• about                             - informations about this program
-• info <link>                       - informations about video
-• download <link> [options]         - download video
-    --onlyvideo                     (download only video)
-    --onlyaudio                     (download only audio)
-    --video=<id>                    (download video stream with specified id, best if not specified)
-    --audio=<id>                    (download audio stream with specified id, best if not specified)
-    --output_path=<path>            (output file path)
-    --filename=<name>               (filename template; more info in README)
-    --video_ext=<extension>         (video file extension)
-    --audio_ext=<extension>         (audio file extension)
-• settings-get <key>                - return value of the specified key
-• settings-set <key> <value>        - set value of the specified key
-• settings-reset                    - restore default settings
+Commands:
+╔════════════════════════════╦═══════════════════════════════════════════════════════════════════════════════╗
+║ Command                    ║ Description                                                                   ║
+╠════════════════════════════╬═══════════════════════════════════════════════════════════════════════════════╣
+║ about                      ║ Informations about this program                                               ║
+╟────────────────────────────╫───────────────────────────────────────────────────────────────────────────────╢
+║ info <link>                ║ Informations about video (metadata and available streams)                     ║
+╟────────────────────────────╫───────────────────────────────────────────────────────────────────────────────╢
+║ download <link> [options]  ║ Download video                                                                ║
+║                            ║                                                                               ║
+║                            ║ Options:                                                                      ║
+║                            ║ --onlyvideo (download only video)                                             ║
+║                            ║ --onlyaudio (download only audio)                                             ║
+║                            ║ --video=<id> (download video stream with specified id; best if not specified) ║
+║                            ║ --audio=<id> (download audio stream with specified id; best if not specified) ║
+║                            ║ --output_path=<path> (output file path)                                       ║
+║                            ║ --filename=<filename> (filename; template)                                    ║
+║                            ║ --video_ext=<extension> (video file extension)                                ║
+║                            ║ --audio_ext=<extension> (audio file extension)                                ║
+╟────────────────────────────╫───────────────────────────────────────────────────────────────────────────────╢
+║ settings-get <key>         ║ Return value of the specified key                                             ║
+╟────────────────────────────╫───────────────────────────────────────────────────────────────────────────────╢
+║ settings-set <key> <value> ║ Set value of the specified key                                                ║
+╟────────────────────────────╫───────────────────────────────────────────────────────────────────────────────╢
+║ settings-reset             ║ Restore default settings                                                      ║
+╚════════════════════════════╩═══════════════════════════════════════════════════════════════════════════════╝
 
-List of settings keys:
-• filename                          - filename template (more info in README)
-• output_path                       - output file path
-• video_ext                         - default video file extension
-• audio_ext                         - default audio file extension
-• date_format                       - format of publication date in filenames and video informations
-• ffmpeg_path                       - ffmpeg executables path
+Settings keys:
+╔═════════════╦════════════════════════════════════════════════════════════════╗
+║ Key         ║ Description                                                    ║
+╠═════════════╬════════════════════════════════════════════════════════════════╣
+║ filename    ║ Filename template                                              ║
+║ output_path ║ Output file path                                               ║
+║ video_ext   ║ Default video file extension                                   ║
+║ audio_ext   ║ Default audio file extension                                   ║
+║ date_format ║ Format of publication date in filenames and video informations ║
+║ ffmpeg_path ║ FFmpeg executables path                                        ║
+╚═════════════╩════════════════════════════════════════════════════════════════╝
+
+Filename template:
+╔════════════╦════════════════════════╗
+║  Wildcard  ║       Description      ║
+╠════════════╬════════════════════════╣
+║ %title%    ║ Video title            ║
+║ %author%   ║ Video author           ║
+║ %pub_date% ║ Video publication date ║
+║ %id%       ║ Video ID               ║
+║ %act_date% ║ Actual date            ║
+║ %duration% ║ Video duration         ║
+║ %views%    ║ Video views            ║
+╚════════════╩════════════════════════╝

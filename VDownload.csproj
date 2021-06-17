@@ -16,9 +16,6 @@
     <Reference Include="FilenameParser">
       <HintPath>lib\FilenameParser.dll</HintPath>
     </Reference>
-    <Reference Include="OutputParser">
-      <HintPath>lib\OutputParser.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>

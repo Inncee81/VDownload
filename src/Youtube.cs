@@ -114,7 +114,7 @@ namespace VDownload
                 Dictionary<string, string> metadata = GetMetadata(url);
 
                 // Options
-                Dictionary<string, string> filenameCode = new Dictionary<string, string> {
+                Dictionary<string, string> filenameCode = new() {
                     {"%title%", metadata["title"]},
                     {"%author%", metadata["author"]},
                     {"%pub_date%", metadata["date"]},
@@ -356,7 +356,7 @@ namespace VDownload
             string tempPath = String.Format(@"{0}\video.{1}", Global.Paths.TEMP, streams[id].Item1[1]);
 
             Console.Write(TerminalOutput.Get(@"output\youtube\downloading_video.out", upSP: false, downSP: false));
-            Stopwatch downloadTime = new Stopwatch();
+            var downloadTime = new Stopwatch();
             downloadTime.Start();
             Client.Videos.Streams.DownloadAsync(streams[id].Item2, tempPath).AsTask().Wait();
             downloadTime.Stop();
@@ -373,7 +373,7 @@ namespace VDownload
             string tempPath = String.Format(@"{0}\audio.{1}", Global.Paths.TEMP, streams[id].Item1[1]);
 
             Console.Write(TerminalOutput.Get(@"output\youtube\downloading_audio.out", upSP: false, downSP: false));
-            Stopwatch downloadTime = new Stopwatch();
+            var downloadTime = new Stopwatch();
             downloadTime.Start();
             Client.Videos.Streams.DownloadAsync(streams[id].Item2, tempPath).AsTask().Wait();
             downloadTime.Stop();

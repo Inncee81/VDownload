@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Octokit;
 using VDownload.Parsers;
 
 namespace VDownload
@@ -11,6 +12,26 @@ namespace VDownload
         {
             if (args.Length > 0)
             {
+                bool checkUpdates = true;
+                if (Config.Main.ReadKey("check_updates_on_start") == "0" || args[0].ToLower() == "check-updates")
+                {
+                    checkUpdates = false;
+                }
+                if (checkUpdates)
+                {
+                    try
+                    {
+                        var githubClient = new GitHubClient(new ProductHeaderValue("VDownload"));
+                        var latestRelease = githubClient.Repository.Release.GetAll("mateuszskoczek", "VDownload").Result[0];
+                        float latestReleaseBuildID = float.Parse(latestRelease.Name.Split(' ')[1].Replace("(", "").Replace(")", "").Replace('.', ','));
+                        if (latestReleaseBuildID > float.Parse(Global.ProgramInfo.BUILD_ID.Replace('.', ',')))
+                        {
+                            Console.WriteLine(TerminalOutput.Get(@"output\main\update_available_on_start.out", args: new() { latestRelease.HtmlUrl }));
+                            Console.ReadLine();
+                        }
+                    }
+                    catch { }
+                }
                 switch (args[0].ToLower())
                 {
                     case "about": About(); break;
@@ -19,6 +40,7 @@ namespace VDownload
                     case "settings-get": SettingsGet(args); break;
                     case "settings-set": SettingsSet(args); break;
                     case "settings-reset": SettingsReset(); break;
+                    case "check-updates": CheckUpdates(); break;
                     default: Help(); break;
                 }
             }
@@ -115,7 +137,7 @@ namespace VDownload
                 if (Config.Main.ReadAll().TryGetValue(key, out string value))
                 {
                     output = TerminalOutput.Get(
-                        file: @"output\settings\get_settings.out",
+                        file: @"output\main\get_settings.out",
                         args: new()
                         {
                             key,
@@ -175,7 +197,7 @@ namespace VDownload
         }
 
 
-        // Resets (deletes) configuration file
+        // Reset (delete) configuration file
         private static void SettingsReset()
         {
             string output = TerminalOutput.Get(@"output\main\reset_settings.out");
@@ -187,6 +209,33 @@ namespace VDownload
             {
                 output = TerminalOutput.Get(@"output\main\error_default_settings_cannot_be_restored.out");
             }
+            Console.WriteLine(output);
+        }
+
+
+        // Check updates
+        private static void CheckUpdates()
+        {
+            string output = TerminalOutput.Get(@"output\main\update_unavailable.out");
+            try
+            {
+                var githubClient = new GitHubClient(new ProductHeaderValue("VDownload"));
+                var latestRelease = githubClient.Repository.Release.GetAll("mateuszskoczek", "VDownload").Result[0];
+                string latestReleaseBuildID = latestRelease.Name.Split(' ')[1].Replace("(", "").Replace(")", "");
+                if (float.Parse(latestReleaseBuildID.Replace('.', ',')) > float.Parse(Global.ProgramInfo.BUILD_ID.Replace('.', ',')))
+                {
+                    output = TerminalOutput.Get(
+                        @"output\main\update_available.out",
+                        args: new()
+                        {
+                            latestRelease.HtmlUrl,
+                            Global.ProgramInfo.VERSION,
+                            latestRelease.Name.Split(' ')[0],
+                        }
+                    );
+                }
+            }
+            catch { }
             Console.WriteLine(output);
         }
     }

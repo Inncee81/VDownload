@@ -16,6 +16,7 @@ namespace VDownload
             {"audio_ext", "mp3"},
             {"date_format", "yyyy.MM.dd"},
             {"ffmpeg_path", Global.Paths.FFMPEG},
+            {"check_updates_on_start", "1"},
         };
         public static ConfigObject Main = new ConfigObject(MainPath, MainContent);
     }
